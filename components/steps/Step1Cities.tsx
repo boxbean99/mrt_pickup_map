@@ -17,10 +17,10 @@ const TYPE_LABEL: Record<LocationType, string> = {
 };
 
 const TYPE_BADGE: Record<LocationType, string> = {
-  city: 'bg-red-100 text-red-700',
-  airport: 'bg-blue-100 text-blue-700',
-  attraction: 'bg-orange-100 text-orange-700',
-  nearby: 'bg-green-100 text-green-700',
+  city: 'bg-[#EDE5CC] text-[#5C5840]',
+  airport: 'bg-[#DDE8EE] text-[#4A6878]',
+  attraction: 'bg-[#EEE8D8] text-[#7A6040]',
+  nearby: 'bg-[#D4EDD4] text-[#4A7A50]',
 };
 
 const TYPE_ORDER: LocationType[] = ['city', 'attraction', 'nearby', 'airport'];
@@ -45,11 +45,11 @@ export default function Step1Cities({ selectedCities, onToggleCity, onNext }: Pr
               {selectedList.map((city, i) => (
                 <div
                   key={city.id}
-                  className="flex items-center justify-between bg-red-50 border border-red-200 rounded-lg px-3 py-2"
+                  className="flex items-center justify-between bg-[#FAF7F0] border border-[#D4C9A8] rounded-lg px-3 py-2"
                 >
                   <div className="min-w-0">
                     <div className="flex items-center gap-1.5 flex-wrap">
-                      <p className="text-sm font-semibold text-red-700">
+                      <p className="text-sm font-semibold text-[#4A7A50]">
                         {i + 1}. {city.emoji} {city.name}
                       </p>
                       <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded-full ${TYPE_BADGE[city.type]}`}>
@@ -60,7 +60,7 @@ export default function Step1Cities({ selectedCities, onToggleCity, onNext }: Pr
                   </div>
                   <button
                     onClick={() => onToggleCity(city.id)}
-                    className="w-6 h-6 flex-shrink-0 flex items-center justify-center text-red-300 hover:text-red-500 text-lg leading-none ml-2"
+                    className="w-6 h-6 flex-shrink-0 flex items-center justify-center text-stone-300 hover:text-stone-500 text-lg leading-none ml-2"
                   >
                     ×
                   </button>
@@ -100,7 +100,7 @@ export default function Step1Cities({ selectedCities, onToggleCity, onNext }: Pr
         <button
           onClick={onNext}
           disabled={selectedCities.length === 0}
-          className="w-full py-3 rounded-lg text-sm font-semibold transition-colors disabled:bg-gray-200 disabled:text-gray-400 disabled:cursor-not-allowed bg-red-600 hover:bg-red-700 text-white"
+          className="w-full py-3 rounded-lg text-sm font-semibold transition-colors disabled:bg-gray-200 disabled:text-gray-400 disabled:cursor-not-allowed bg-[#2A2A25] hover:bg-[#1A1A16] text-white"
         >
           다음: 날짜 설정 →
         </button>

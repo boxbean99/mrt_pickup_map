@@ -44,16 +44,16 @@ export default function StepPanel({
                 <div
                   className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold flex-shrink-0 ${
                     isActive
-                      ? 'bg-red-600 text-white'
+                      ? 'bg-[#76B87A] text-white'
                       : isDone
-                      ? 'bg-red-100 text-red-600'
+                      ? 'bg-[#D4EDD4] text-[#4A8C52]'
                       : 'bg-gray-100 text-gray-400'
                   }`}
                 >
                   {isDone ? '✓' : stepNum}
                 </div>
                 {i < STEP_LABELS.length - 1 && (
-                  <div className={`h-0.5 flex-1 ${isDone ? 'bg-red-200' : 'bg-gray-100'}`} />
+                  <div className={`h-0.5 flex-1 ${isDone ? 'bg-[#A5D6A7]' : 'bg-gray-100'}`} />
                 )}
               </div>
             );

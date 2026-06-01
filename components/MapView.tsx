@@ -6,10 +6,10 @@ import { CITIES, CITY_MAP } from '@/data/cities';
 import type { LocationType } from '@/types';
 
 const TYPE_COLOR: Record<LocationType, { default: string; selected: string; pulse: string }> = {
-  city:       { default: '#868e96', selected: '#e03131', pulse: '#e03131' },
-  airport:    { default: '#74c0fc', selected: '#1971c2', pulse: '#1971c2' },
-  attraction: { default: '#ffa94d', selected: '#e67700', pulse: '#e67700' },
-  nearby:     { default: '#69db7c', selected: '#2f9e44', pulse: '#2f9e44' },
+  city:       { default: '#8C8C84', selected: '#3D5C42', pulse: '#3D5C42' },
+  airport:    { default: '#8AAEC4', selected: '#3A6880', pulse: '#3A6880' },
+  attraction: { default: '#C4A86A', selected: '#7A6030', pulse: '#7A6030' },
+  nearby:     { default: '#8DC690', selected: '#4A8C52', pulse: '#4A8C52' },
 };
 
 const TYPE_RADIUS: Record<LocationType, { default: number; selected: number }> = {
@@ -67,7 +67,7 @@ export default function MapView({ selectedCities, onToggleCity }: Props) {
   const markerScale = 1 / position.zoom;
 
   return (
-    <div className="relative w-full h-full bg-[#dce8f0] overflow-hidden">
+    <div className="relative w-full h-full bg-[#E8E6E0] overflow-hidden">
       <ComposableMap
         projection="geoMercator"
         projectionConfig={{ center: CENTER, scale: 1800 }}
@@ -90,12 +90,12 @@ export default function MapView({ selectedCities, onToggleCity }: Props) {
                     geography={geo}
                     style={{
                       default: {
-                        fill: isTurkey ? '#f5e6c8' : '#cfdde8',
-                        stroke: isTurkey ? '#c9a96e' : '#b8cdd8',
+                        fill: isTurkey ? '#EDE8D5' : '#D5D2C8',
+                        stroke: isTurkey ? '#B8A878' : '#C0BDB4',
                         strokeWidth: isTurkey ? 1.2 : 0.5,
                         outline: 'none',
                       },
-                      hover: { fill: isTurkey ? '#eedcb0' : '#cfdde8', outline: 'none' },
+                      hover: { fill: isTurkey ? '#E4DCCA' : '#D5D2C8', outline: 'none' },
                       pressed: { outline: 'none' },
                     }}
                   />
@@ -111,7 +111,7 @@ export default function MapView({ selectedCities, onToggleCity }: Props) {
                 key={i}
                 from={from}
                 to={routeCoords[i + 1]}
-                stroke="#e03131"
+                stroke="#76B87A"
                 strokeWidth={2 * markerScale}
                 strokeDasharray={`${6 * markerScale} ${4 * markerScale}`}
                 strokeLinecap="round"
@@ -228,10 +228,10 @@ export default function MapView({ selectedCities, onToggleCity }: Props) {
       {/* Legend */}
       <div className="absolute bottom-3 left-3 bg-white/90 rounded-lg px-3 py-2 text-xs shadow-sm flex flex-col gap-1">
         {[
-          { color: '#e03131', label: '주요 도시' },
-          { color: '#1971c2', label: '공항' },
-          { color: '#e67700', label: '관광지' },
-          { color: '#2f9e44', label: '근교 도시' },
+          { color: '#3D5C42', label: '주요 도시' },
+          { color: '#3A6880', label: '공항' },
+          { color: '#7A6030', label: '관광지' },
+          { color: '#4A8C52', label: '근교 도시' },
         ].map(({ color, label }) => (
           <div key={label} className="flex items-center gap-2">
             <div className="w-3 h-3 rounded-full border-2 border-white shadow-sm" style={{ backgroundColor: color }} />

@@ -35,7 +35,7 @@ function ProductCard({ product }: { product: Product }) {
       />
       <div className="flex-1 min-w-0">
         <div className="flex items-start justify-between gap-1">
-          <p className="text-xs font-semibold text-gray-800 leading-snug line-clamp-2 group-hover:text-red-600 transition-colors">
+          <p className="text-xs font-semibold text-gray-800 leading-snug line-clamp-2 group-hover:text-[#4A8C52] transition-colors">
             {isPickup && <span className="text-blue-600 mr-1">🚐</span>}
             {product.title}
           </p>
@@ -45,7 +45,7 @@ function ProductCard({ product }: { product: Product }) {
           <span className="text-xs text-gray-600">{product.rating.toFixed(1)}</span>
           <span className="text-xs text-gray-400">({product.reviewCount.toLocaleString()})</span>
         </div>
-        <p className="text-sm font-bold text-red-600 mt-1">
+        <p className="text-sm font-bold text-[#2A2A25] mt-1">
           ₩{product.price.toLocaleString()}
           <span className="text-xs font-normal text-gray-400 ml-1">~</span>
         </p>

@@ -60,11 +60,11 @@ export default function PlannerWidget({ products }: Props) {
   return (
     <div className="flex flex-col h-screen max-h-[600px] min-h-[500px] rounded-xl overflow-hidden shadow-xl border border-gray-200">
       {/* Header */}
-      <div className="flex-shrink-0 bg-red-600 text-white px-5 py-3 flex items-center gap-2">
+      <div className="flex-shrink-0 bg-[#2A2A25] text-[#FAF7F0] px-5 py-3 flex items-center gap-2">
         <span className="text-lg">🇹🇷</span>
         <span className="font-bold text-sm">터키 여행 플래너</span>
-        <span className="text-red-300 mx-1">|</span>
-        <span className="text-red-100 text-xs">마이리얼트립</span>
+        <span className="text-[#76B87A] mx-1">|</span>
+        <span className="text-[#C8DCCA] text-xs">마이리얼트립</span>
       </div>
 
       {/* Body */}

@@ -28,7 +28,7 @@ export default function Step2Dates({ selectedCities, nights, onChangeNights, onN
           </p>
           <button
             onClick={applyRecommendation}
-            className="text-xs text-red-600 font-medium hover:text-red-800 border border-red-200 rounded-full px-2.5 py-0.5 hover:bg-red-50 transition-colors"
+            className="text-xs text-stone-600 font-medium hover:text-stone-800 border border-stone-300 rounded-full px-2.5 py-0.5 hover:bg-stone-50 transition-colors"
           >
             ✨ AI 추천
           </button>
@@ -66,9 +66,9 @@ export default function Step2Dates({ selectedCities, nights, onChangeNights, onN
           })}
         </div>
 
-        <div className="mt-4 bg-red-50 rounded-lg p-3 text-center">
+        <div className="mt-4 bg-[#FAF7F0] border border-[#EDE5CC] rounded-lg p-3 text-center">
           <p className="text-xs text-gray-500">총 여행 기간</p>
-          <p className="text-xl font-bold text-red-600 mt-0.5">
+          <p className="text-xl font-bold text-[#2A2A25] mt-0.5">
             {totalNights}박 {totalNights + 1}일
           </p>
         </div>
@@ -83,7 +83,7 @@ export default function Step2Dates({ selectedCities, nights, onChangeNights, onN
         </button>
         <button
           onClick={onNext}
-          className="flex-[2] py-3 rounded-lg text-sm font-semibold bg-red-600 hover:bg-red-700 text-white transition-colors"
+          className="flex-[2] py-3 rounded-lg text-sm font-semibold bg-[#2A2A25] hover:bg-[#1A1A16] text-white transition-colors"
         >
           다음: 여행 스타일 →
         </button>
