@@ -1,0 +1,200 @@
+[
+  {
+    "id": "ist-pickup-1",
+    "cityId": "istanbul",
+    "category": "pickup",
+    "title": "이스탄불 공항 픽업 서비스 (IST/SAW)",
+    "price": 45000,
+    "rating": 4.8,
+    "reviewCount": 312,
+    "imageUrl": "https://images.unsplash.com/photo-1527838832700-5059252407fa?w=400&q=80",
+    "mrtUrl": "https://www.myrealtrip.com/offers/istanbul-airport-pickup"
+  },
+  {
+    "id": "ist-pickup-2",
+    "cityId": "istanbul",
+    "category": "pickup",
+    "title": "이스탄불 → 카파도키아 밤버스 픽업 패키지",
+    "price": 38000,
+    "rating": 4.6,
+    "reviewCount": 187,
+    "imageUrl": "https://images.unsplash.com/photo-1527838832700-5059252407fa?w=400&q=80",
+    "mrtUrl": "https://www.myrealtrip.com/offers/istanbul-cappadocia-bus"
+  },
+  {
+    "id": "ist-tour-1",
+    "cityId": "istanbul",
+    "category": "tour",
+    "title": "이스탄불 구시가지 반일 투어 (한국어 가이드)",
+    "price": 89000,
+    "rating": 4.9,
+    "reviewCount": 523,
+    "imageUrl": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=400&q=80",
+    "mrtUrl": "https://www.myrealtrip.com/offers/istanbul-old-city-tour"
+  },
+  {
+    "id": "ist-tour-2",
+    "cityId": "istanbul",
+    "category": "tour",
+    "title": "보스포루스 유람선 + 돌마바흐체 궁전 투어",
+    "price": 72000,
+    "rating": 4.7,
+    "reviewCount": 298,
+    "imageUrl": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=400&q=80",
+    "mrtUrl": "https://www.myrealtrip.com/offers/bosphorus-cruise"
+  },
+  {
+    "id": "ist-food-1",
+    "cityId": "istanbul",
+    "category": "food",
+    "title": "이스탄불 현지 음식 투어 (그랜드 바자르 포함)",
+    "price": 95000,
+    "rating": 4.8,
+    "reviewCount": 145,
+    "imageUrl": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&q=80",
+    "mrtUrl": "https://www.myrealtrip.com/offers/istanbul-food-tour"
+  },
+  {
+    "id": "cap-pickup-1",
+    "cityId": "cappadocia",
+    "category": "pickup",
+    "title": "카파도키아 공항 픽업 (네브셰히르/카이세리)",
+    "price": 35000,
+    "rating": 4.7,
+    "reviewCount": 204,
+    "imageUrl": "https://images.unsplash.com/photo-1527838832700-5059252407fa?w=400&q=80",
+    "mrtUrl": "https://www.myrealtrip.com/offers/cappadocia-airport-pickup"
+  },
+  {
+    "id": "cap-pickup-2",
+    "cityId": "cappadocia",
+    "category": "pickup",
+    "title": "카파도키아 → 파묵칼레 셔틀 버스",
+    "price": 42000,
+    "rating": 4.5,
+    "reviewCount": 89,
+    "imageUrl": "https://images.unsplash.com/photo-1527838832700-5059252407fa?w=400&q=80",
+    "mrtUrl": "https://www.myrealtrip.com/offers/cappadocia-pamukkale-shuttle"
+  },
+  {
+    "id": "cap-activity-1",
+    "cityId": "cappadocia",
+    "category": "activity",
+    "title": "카파도키아 열기구 투어 (일출 비행)",
+    "price": 320000,
+    "rating": 5.0,
+    "reviewCount": 876,
+    "imageUrl": "https://images.unsplash.com/photo-1539650116574-75c0d3c6eb29?w=400&q=80",
+    "mrtUrl": "https://www.myrealtrip.com/offers/cappadocia-balloon"
+  },
+  {
+    "id": "cap-tour-1",
+    "cityId": "cappadocia",
+    "category": "tour",
+    "title": "카파도키아 레드 투어 (괴레메 야외박물관)",
+    "price": 65000,
+    "rating": 4.8,
+    "reviewCount": 412,
+    "imageUrl": "https://images.unsplash.com/photo-1539650116574-75c0d3c6eb29?w=400&q=80",
+    "mrtUrl": "https://www.myrealtrip.com/offers/cappadocia-red-tour"
+  },
+  {
+    "id": "eph-pickup-1",
+    "cityId": "ephesus",
+    "category": "pickup",
+    "title": "이즈미르 공항 픽업 서비스",
+    "price": 38000,
+    "rating": 4.6,
+    "reviewCount": 156,
+    "imageUrl": "https://images.unsplash.com/photo-1527838832700-5059252407fa?w=400&q=80",
+    "mrtUrl": "https://www.myrealtrip.com/offers/izmir-airport-pickup"
+  },
+  {
+    "id": "eph-tour-1",
+    "cityId": "ephesus",
+    "category": "tour",
+    "title": "에페소 유적지 + 셀축 반일 투어",
+    "price": 78000,
+    "rating": 4.8,
+    "reviewCount": 334,
+    "imageUrl": "https://images.unsplash.com/photo-1574739782594-db4ead022697?w=400&q=80",
+    "mrtUrl": "https://www.myrealtrip.com/offers/ephesus-tour"
+  },
+  {
+    "id": "eph-tour-2",
+    "cityId": "ephesus",
+    "category": "tour",
+    "title": "에페소 + 파묵칼레 1일 투어",
+    "price": 125000,
+    "rating": 4.7,
+    "reviewCount": 218,
+    "imageUrl": "https://images.unsplash.com/photo-1574739782594-db4ead022697?w=400&q=80",
+    "mrtUrl": "https://www.myrealtrip.com/offers/ephesus-pamukkale-day-tour"
+  },
+  {
+    "id": "pam-pickup-1",
+    "cityId": "pamukkale",
+    "category": "pickup",
+    "title": "파묵칼레 데니즐리 공항 픽업",
+    "price": 32000,
+    "rating": 4.5,
+    "reviewCount": 98,
+    "imageUrl": "https://images.unsplash.com/photo-1527838832700-5059252407fa?w=400&q=80",
+    "mrtUrl": "https://www.myrealtrip.com/offers/pamukkale-airport-pickup"
+  },
+  {
+    "id": "pam-tour-1",
+    "cityId": "pamukkale",
+    "category": "tour",
+    "title": "파묵칼레 석회 계단 + 히에라폴리스 투어",
+    "price": 58000,
+    "rating": 4.9,
+    "reviewCount": 445,
+    "imageUrl": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80",
+    "mrtUrl": "https://www.myrealtrip.com/offers/pamukkale-tour"
+  },
+  {
+    "id": "pam-activity-1",
+    "cityId": "pamukkale",
+    "category": "activity",
+    "title": "클레오파트라 온천 + 파묵칼레 입장권 패키지",
+    "price": 45000,
+    "rating": 4.7,
+    "reviewCount": 267,
+    "imageUrl": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80",
+    "mrtUrl": "https://www.myrealtrip.com/offers/cleopatra-pool"
+  },
+  {
+    "id": "ant-pickup-1",
+    "cityId": "antalya",
+    "category": "pickup",
+    "title": "안탈리아 공항 픽업 서비스",
+    "price": 40000,
+    "rating": 4.7,
+    "reviewCount": 189,
+    "imageUrl": "https://images.unsplash.com/photo-1527838832700-5059252407fa?w=400&q=80",
+    "mrtUrl": "https://www.myrealtrip.com/offers/antalya-airport-pickup"
+  },
+  {
+    "id": "ant-tour-1",
+    "cityId": "antalya",
+    "category": "tour",
+    "title": "안탈리아 구시가지 (칼레이치) + 두덴 폭포 투어",
+    "price": 68000,
+    "rating": 4.8,
+    "reviewCount": 301,
+    "imageUrl": "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=400&q=80",
+    "mrtUrl": "https://www.myrealtrip.com/offers/antalya-old-city-tour"
+  },
+  {
+    "id": "ant-activity-1",
+    "cityId": "antalya",
+    "category": "activity",
+    "title": "안탈리아 지중해 요트 투어 (점심 포함)",
+    "price": 95000,
+    "rating": 4.9,
+    "reviewCount": 198,
+    "imageUrl": "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=400&q=80",
+    "mrtUrl": "https://www.myrealtrip.com/offers/antalya-yacht-tour"
+  }
+]
