@@ -1,10 +1,11 @@
 import { CITIES, CITY_MAP } from '@/data/cities';
-import type { City, Product } from '@/types';
-import ProductCard from './ProductCard';
+import type { City } from '@/types';
+import PickupProductCard from './PickupProductCard';
 
 type Props = {
-  products: Product[];
   filteredAirportId: string;
+  pickupType: 'pickup' | 'sending';
+  onClearFilter: () => void;
 };
 
 type AirportGroup = {
@@ -12,10 +13,10 @@ type AirportGroup = {
   cityName: string;
   cityEmoji: string;
   airports: City[];
-  products: Product[];
+  airportCodes: string;
 };
 
-export default function AirportSection({ products, filteredAirportId }: Props) {
+export default function AirportSection({ filteredAirportId, pickupType, onClearFilter }: Props) {
   const airports = CITIES.filter((c) => c.type === 'airport' && c.parentCityId);
 
   const seen = new Set<string>();
@@ -27,16 +28,15 @@ export default function AirportSection({ products, filteredAirportId }: Props) {
       seen.add(cityId);
       const city = CITY_MAP[cityId];
       const cityAirports = airports.filter((a) => a.parentCityId === cityId);
-      const cityProducts = products.filter(
-        (p) => p.cityId === cityId && p.category === 'pickup'
-      );
-      if (cityProducts.length > 0) {
+      const pickupProducts = city?.pickupProducts ?? [];
+      if (pickupProducts.length > 0) {
+        const codes = cityAirports.map((a) => a.description.split(' · ')[0]).join(' / ');
         groups.push({
           cityId,
           cityName: city?.name ?? cityId,
           cityEmoji: city?.emoji ?? '✈️',
           airports: cityAirports,
-          products: cityProducts,
+          airportCodes: codes,
         });
       }
     }
@@ -46,18 +46,22 @@ export default function AirportSection({ products, filteredAirportId }: Props) {
     ? CITIES.find((c) => c.id === filteredAirportId)
     : null;
 
-  const displayGroups =
-    filteredAirport?.parentCityId
-      ? groups.filter((g) => g.cityId === filteredAirport.parentCityId)
-      : groups;
+  const displayGroups = filteredAirport?.parentCityId
+    ? groups.filter((g) => g.cityId === filteredAirport.parentCityId)
+    : groups;
 
   return (
     <div className="px-6 py-8 max-w-4xl mx-auto">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-bold text-[#2A2A25]">주요 공항</h2>
+        <div>
+          <h2 className="text-xl font-bold text-[#2A2A25]">공항별 픽업/샌딩 상품</h2>
+          <p className="text-xs text-gray-400 mt-0.5">
+            총 {displayGroups.reduce((s, g) => s + (CITY_MAP[g.cityId]?.pickupProducts?.length ?? 0), 0)}개 상품
+          </p>
+        </div>
         {filteredAirportId && (
           <button
-            onClick={() => window.location.reload()}
+            onClick={onClearFilter}
             className="text-xs text-[#4A8C52] bg-[#D4EDD4] px-3 py-1 rounded-full font-medium hover:bg-[#C8E6C9] transition-colors"
           >
             필터 해제 ×
@@ -74,32 +78,54 @@ export default function AirportSection({ products, filteredAirportId }: Props) {
       )}
 
       <div className="space-y-10">
-        {displayGroups.map((group) => (
-          <div key={group.cityId}>
-            <div className="flex items-center gap-3 mb-4 flex-wrap">
-              <div className="flex items-center gap-2">
-                <span className="text-xl">{group.cityEmoji}</span>
-                <h3 className="text-lg font-bold text-[#2A2A25]">{group.cityName}</h3>
+        {displayGroups.map((group) => {
+          const city = CITY_MAP[group.cityId];
+          const products = city?.pickupProducts ?? [];
+
+          return (
+            <div key={group.cityId}>
+              {/* 공항 그룹 헤더 */}
+              <div className="flex items-center gap-3 mb-1 flex-wrap">
+                <div className="flex items-center gap-2">
+                  <span className="text-xl">{group.cityEmoji}</span>
+                  <h3 className="text-lg font-bold text-[#2A2A25]">{group.cityName}</h3>
+                </div>
+                <div className="flex gap-1.5 flex-wrap">
+                  {group.airports.map((a) => (
+                    <span
+                      key={a.id}
+                      className="text-[10px] bg-[#EDE5CC] text-[#5C5840] px-2 py-0.5 rounded-full font-bold"
+                    >
+                      {a.description.split(' · ')[0]}
+                    </span>
+                  ))}
+                </div>
               </div>
-              <div className="flex gap-1.5 flex-wrap">
-                {group.airports.map((a) => (
-                  <span
-                    key={a.id}
-                    className="text-[10px] bg-[#EDE5CC] text-[#5C5840] px-2 py-0.5 rounded-full font-bold"
-                  >
-                    {a.description.split(' · ')[0]}
-                  </span>
+
+              {/* 출발/도착 요약 */}
+              <p className="text-xs text-gray-400 mb-4">
+                {pickupType === 'pickup'
+                  ? `출발: ${group.airportCodes} → 도착: ${group.cityName} 시내/호텔`
+                  : `출발: ${group.cityName} 시내/호텔 → 도착: ${group.airportCodes}`}
+                {' · '}{products.length}개 상품
+              </p>
+
+              {/* 상품 목록 */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {products.map((p) => (
+                  <PickupProductCard
+                    key={p.gid}
+                    product={p}
+                    airportCodes={group.airportCodes}
+                    cityId={group.cityId}
+                    cityName={group.cityName}
+                    pickupType={pickupType}
+                  />
                 ))}
               </div>
             </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {group.products.map((p) => (
-                <ProductCard key={p.id} product={p} />
-              ))}
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

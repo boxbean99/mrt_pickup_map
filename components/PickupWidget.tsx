@@ -2,7 +2,6 @@
 
 import { useState, useCallback } from 'react';
 import dynamic from 'next/dynamic';
-import type { Product } from '@/types';
 import HeroBanner from './HeroBanner';
 import SearchWidget from './SearchWidget';
 import ValueProps from './ValueProps';
@@ -12,12 +11,12 @@ const MapView = dynamic(() => import('./MapView'), { ssr: false });
 
 type PickupType = 'pickup' | 'sending';
 
-type Props = { products: Product[] };
-
-export default function PickupWidget({ products }: Props) {
+export default function PickupWidget() {
+  const [pickupType, setPickupType] = useState<PickupType>('pickup');
   const [filteredAirportId, setFilteredAirportId] = useState('');
 
-  function handleSearch(airportId: string, _type: PickupType, _passengers: number) {
+  function handleSearch(airportId: string, type: PickupType, _passengers: number) {
+    setPickupType(type);
     setFilteredAirportId(airportId);
     if (airportId) {
       document.getElementById('airport-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -47,7 +46,11 @@ export default function PickupWidget({ products }: Props) {
       </div>
 
       <div id="airport-section">
-        <AirportSection products={products} filteredAirportId={filteredAirportId} />
+        <AirportSection
+          filteredAirportId={filteredAirportId}
+          pickupType={pickupType}
+          onClearFilter={() => setFilteredAirportId('')}
+        />
       </div>
     </div>
   );
