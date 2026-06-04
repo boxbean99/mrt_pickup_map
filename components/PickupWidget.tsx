@@ -9,23 +9,25 @@ import AirportSection from './AirportSection';
 
 const MapView = dynamic(() => import('./MapView'), { ssr: false });
 
-type PickupType = 'pickup' | 'sending';
-
 export default function PickupWidget() {
-  const [pickupType, setPickupType] = useState<PickupType>('pickup');
-  const [filteredAirportId, setFilteredAirportId] = useState('');
+  const [fromId, setFromId] = useState('');
+  const [toId, setToId] = useState('');
 
-  function handleSearch(airportId: string, type: PickupType, _passengers: number) {
-    setPickupType(type);
-    setFilteredAirportId(airportId);
-    if (airportId) {
+  function handleSearch(newFromId: string, newToId: string, _passengers: number) {
+    setFromId(newFromId);
+    setToId(newToId);
+    if (newFromId || newToId) {
       document.getElementById('airport-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
 
+  // 지도 마커 클릭 → fromId로 연결
   const handleMapToggle = useCallback((id: string) => {
-    setFilteredAirportId((prev) => (prev === id ? '' : id));
+    setFromId((prev) => (prev === id ? '' : id));
+    setToId('');
   }, []);
+
+  const mapSelected = [fromId, toId].filter(Boolean);
 
   return (
     <div className="min-h-screen bg-[#FAF7F0]">
@@ -37,19 +39,16 @@ export default function PickupWidget() {
       <div className="px-6 py-8 max-w-4xl mx-auto">
         <h2 className="text-xl font-bold text-[#2A2A25] mb-4">터키 공항 지도</h2>
         <div className="rounded-xl overflow-hidden border border-[#D4C9A8] shadow-sm" style={{ height: 420 }}>
-          <MapView
-            selectedCities={filteredAirportId ? [filteredAirportId] : []}
-            onToggleCity={handleMapToggle}
-          />
+          <MapView selectedCities={mapSelected} onToggleCity={handleMapToggle} />
         </div>
-        <p className="text-xs text-gray-400 mt-2">공항 마커를 클릭하면 해당 공항 상품을 확인할 수 있습니다.</p>
+        <p className="text-xs text-gray-400 mt-2">공항 또는 도시 마커를 클릭하면 출발지로 설정됩니다.</p>
       </div>
 
       <div id="airport-section">
         <AirportSection
-          filteredAirportId={filteredAirportId}
-          pickupType={pickupType}
-          onClearFilter={() => setFilteredAirportId('')}
+          fromId={fromId}
+          toId={toId}
+          onClearFilter={() => { setFromId(''); setToId(''); }}
         />
       </div>
     </div>

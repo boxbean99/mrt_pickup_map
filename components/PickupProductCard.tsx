@@ -8,32 +8,16 @@ const CITY_IMAGES: Record<string, string> = {
   fethiye:    'https://images.unsplash.com/photo-1527838832700-5059252407fa?w=400&q=80',
 };
 
-const IATA_CODES = ['IST', 'SAW', 'AYT', 'ASR', 'NAV', 'DLM', 'ADB', 'ESB'];
-
-function parseRoute(title: string, defaultAirportCodes: string, cityName: string) {
-  const found = IATA_CODES.filter((c) => title.includes(c));
-  const airportLabel = found.length > 0 ? found.join(' / ') : defaultAirportCodes;
-  const bidirectional = title.includes('↔');
-  const oneway = title.includes('→') || title.includes('-');
-  const destLabel = cityName + (title.includes('시내') ? ' 시내' : ' 호텔');
-  return { airportLabel, destLabel, bidirectional, oneway };
-}
-
 type Props = {
   product: PickupProduct;
-  airportCodes: string;
   cityId: string;
-  cityName: string;
+  fromName: string;
+  toName: string;
   pickupType: 'pickup' | 'sending';
 };
 
-export default function PickupProductCard({ product, airportCodes, cityId, cityName, pickupType }: Props) {
+export default function PickupProductCard({ product, cityId, fromName, toName }: Props) {
   const mrtUrl = `https://experiences.myrealtrip.com/products/${product.gid}`;
-  const { airportLabel, destLabel, bidirectional } = parseRoute(product.title, airportCodes, cityName);
-
-  const from = pickupType === 'pickup' ? airportLabel : destLabel;
-  const to   = pickupType === 'pickup' ? destLabel    : airportLabel;
-  const arrow = bidirectional ? '↔' : '→';
 
   return (
     <a
@@ -50,14 +34,14 @@ export default function PickupProductCard({ product, airportCodes, cityId, cityN
 
       {/* 정보 */}
       <div className="flex-1 min-w-0">
-        {/* 출발 → 도착 */}
+        {/* 출발 → 도착 뱃지 */}
         <div className="flex items-center gap-1 mb-1.5 flex-wrap">
-          <span className="text-[10px] font-bold bg-[#EDE5CC] text-[#5C5840] px-1.5 py-0.5 rounded">
-            {from}
+          <span className="text-[10px] font-bold bg-[#EDE5CC] text-[#5C5840] px-1.5 py-0.5 rounded truncate max-w-[110px]">
+            {fromName}
           </span>
-          <span className="text-[10px] text-gray-400">{arrow}</span>
-          <span className="text-[10px] font-bold bg-[#D4EDD4] text-[#4A7A50] px-1.5 py-0.5 rounded">
-            {to}
+          <span className="text-[10px] text-gray-400 flex-shrink-0">→</span>
+          <span className="text-[10px] font-bold bg-[#D4EDD4] text-[#4A7A50] px-1.5 py-0.5 rounded truncate max-w-[110px]">
+            {toName}
           </span>
         </div>
 
@@ -68,13 +52,13 @@ export default function PickupProductCard({ product, airportCodes, cityId, cityN
 
         {/* 파트너 + 상태 */}
         <div className="flex items-center gap-2 mt-1.5">
-          <span className="text-[10px] text-gray-500">{product.partner}</span>
+          <span className="text-[10px] text-gray-500 truncate">{product.partner}</span>
           {product.status === 'onsale' ? (
-            <span className="text-[9px] font-bold text-[#4A8C52] bg-[#D4EDD4] px-1.5 py-0.5 rounded-full">
+            <span className="text-[9px] font-bold text-[#4A8C52] bg-[#D4EDD4] px-1.5 py-0.5 rounded-full flex-shrink-0">
               판매중
             </span>
           ) : (
-            <span className="text-[9px] font-bold text-gray-400 bg-gray-100 px-1.5 py-0.5 rounded-full">
+            <span className="text-[9px] font-bold text-gray-400 bg-gray-100 px-1.5 py-0.5 rounded-full flex-shrink-0">
               준비중
             </span>
           )}
