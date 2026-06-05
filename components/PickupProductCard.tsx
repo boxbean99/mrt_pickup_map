@@ -50,15 +50,14 @@ export default function PickupProductCard({ product, cityId, fromName, toName }:
           {product.title}
         </p>
 
-        {/* 파트너 + 상태 */}
+        {/* 상태 */}
         <div className="flex items-center gap-2 mt-1.5">
-          <span className="text-[10px] text-gray-500 truncate">{product.partner}</span>
           {product.status === 'onsale' ? (
-            <span className="text-[9px] font-bold text-[#4A8C52] bg-[#D4EDD4] px-1.5 py-0.5 rounded-full flex-shrink-0">
+            <span className="text-[9px] font-bold text-[#4A8C52] bg-[#D4EDD4] px-1.5 py-0.5 rounded-full">
               판매중
             </span>
           ) : (
-            <span className="text-[9px] font-bold text-gray-400 bg-gray-100 px-1.5 py-0.5 rounded-full flex-shrink-0">
+            <span className="text-[9px] font-bold text-gray-400 bg-gray-100 px-1.5 py-0.5 rounded-full">
               준비중
             </span>
           )}
